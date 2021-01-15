@@ -5,14 +5,16 @@ const isJson=require('./utils')
 
 
 function getGitHubActionType (json) {
-	if(json.action==CONST.ACTION.CREATED && json.starred_at)
+	if (json.action==CONST.ACTION.CREATED && json.starred_at)
 		return CONST.STAR
-	else if(json.action==CONST.ACTION.DELETED && json.starred_at==null)
+	else if (json.action==CONST.ACTION.DELETED && json.starred_at==null)
 		return CONST.UNSTAR
-	else if(json.ref)
+	else if (json.ref)
 		return CONST.COMMIT
-	else if(typeof json.issue =='object')
+	else if (typeof json.issue=="object")
 		return CONST.ISSUE
+	else if (typeof json.forkee=="object")
+		return CONST.FORK
 }
 
 const getQuery=(json, type)=>{
@@ -40,7 +42,7 @@ const getQuery=(json, type)=>{
 			return WOQL.and (
 				WOQL.and(
 					WOQL.idgen("doc:GitHubStar", [repoID, userID], "v:Star"),
-					WOQL.update_triple("v:Star", "type", "scm:GitHubStar"),
+					WOQL.add_triple("v:Star", "type", "scm:GitHubStar"),
 					WOQL.update_triple("v:Star", "action", json.action),
 					WOQL.update_triple("v:Star", "starred_at", WOQL.literal(json.starred_at, "xsd:dateTime"))
 				),
@@ -57,7 +59,7 @@ const getQuery=(json, type)=>{
 			return WOQL.and (
 				WOQL.and(
 					WOQL.idgen("doc:GitHubStar", [repoID, userID], "v:Star"),
-					WOQL.update_triple("v:Star", "type", "scm:GitHubStar"),
+					WOQL.add_triple("v:Star", "type", "scm:GitHubStar"),
 					WOQL.update_triple("v:Star", "action", json.action),
 					WOQL.update_triple("v:Star", "unstarred_at", WOQL.literal(unstartedAt, "xsd:dateTime"))
 				),
@@ -70,7 +72,7 @@ const getQuery=(json, type)=>{
 			)
 		case CONST.COMMIT:
 			let commitID=json.after
-			return WOQL.and(
+			var q=WOQL.and(
 				WOQL.and(
 					WOQL.idgen("doc:GitHubCommit", [commitID], "v:Commit"),
 					WOQL.add_triple("v:Commit", "type", "scm:GitHubCommit"),
@@ -85,12 +87,15 @@ const getQuery=(json, type)=>{
 					WOQL.add_triple("v:Repo", "gitHub_repository_commit", "v:Commit")
 				)
 			)
+			if (json.pusher.email)
+				return WOQL.and(q, WOQL.update_triple("v:User", "gitHub_user_email", json.pusher.email))
+			else return q
 		case CONST.ISSUE:
 			let issueID=json.issue.id
-			return WOQL.and(
+			var q=WOQL.and(
 				WOQL.and(
 					WOQL.idgen("doc:GitHubIssue", [issueID], "v:Issue"),
-					WOQL.update_triple("v:Issue", "type", "scm:GitHubIssue"),
+					WOQL.add_triple("v:Issue", "type", "scm:GitHubIssue"),
 					WOQL.update_triple("v:Issue", "gitHub_issue_state", json.issue.state),
 					WOQL.update_triple("v:Issue", "gitHub_issue_url", WOQL.literal(json.issue.url, "xdd:url")),
 					WOQL.update_triple("v:Issue", "gitHub_issue_title", json.issue.title),
@@ -100,16 +105,19 @@ const getQuery=(json, type)=>{
 				),
 				updateUserQuery, updateRepoQuery,
 				WOQL.and(
-					WOQL.update_triple("v:User", "gitHub_user_issue", "v:Issue"),
-					WOQL.update_triple("v:Repo", "gitHub_repository_issue", "v:Issue")
+					WOQL.add_triple("v:User", "gitHub_user_issue", "v:Issue"),
+					WOQL.add_triple("v:Repo", "gitHub_repository_issue", "v:Issue")
 				)
 			)
+			if (json.issue.closed_at)
+				return WOQL.and(q, WOQL.update_triple("v:Issue", "gitHub_issue_closed_at", WOQL.literal(json.issue.closed_at, "xsd:dateTime")))
+			else return q
 		case CONST.PULL_REQUEST:
 			let pullResquestID=json.pull_request.id
-			return WOQL.and(
+			var q=WOQL.and(
 				WOQL.and(
 					WOQL.idgen("doc:GitHubPullRequest", [issueID], "v:PullRequest"),
-					WOQL.update_triple("v:PullRequest", "type", "scm:GitHubPullRequest"),
+					WOQL.add_triple("v:PullRequest", "type", "scm:GitHubPullRequest"),
 					WOQL.update_triple("v:PullRequest", "gitHub_pull_request_state", json.pull_request.state),
 					WOQL.update_triple("v:PullRequest", "gitHub_pull_request_url", WOQL.literal(json.pull_request.url, "xdd:url")),
 					WOQL.update_triple("v:PullRequest", "gitHub_pull_request_title", json.pull_request.title),
@@ -119,22 +127,41 @@ const getQuery=(json, type)=>{
 				),
 				updateUserQuery, updateRepoQuery,
 				WOQL.and(
-					WOQL.update_triple("v:User", "gitHub_pull_request_issue", "v:PullRequest"),
-					WOQL.update_triple("v:Repo", "gitHub_pull_request_issue", "v:PullRequest")
+					WOQL.add_triple("v:User", "gitHub_pull_request_issue", "v:PullRequest"),
+					WOQL.add_triple("v:Repo", "gitHub_pull_request_issue", "v:PullRequest")
 				)
 			)
-
+			if (json.pull_request.closed_at)
+				return WOQL.and(q, WOQL.update_triple("v:PullRequest", "gitHub_pull_request_closed_at", WOQL.literal(json.pull_request.closed_at, "xsd:dateTime")))
+			else return q
+		case CONST.FORK:
+			let forkID=json.forkee.id
+			return WOQL.and(
+				WOQL.and(
+					WOQL.idgen("doc:GitHubFork", [forkID], "v:Fork"),
+					WOQL.add_triple("v:Fork", "type", "scm:GitHubFork"),
+					WOQL.add_triple("v:Fork", "gitHub_fork_url", WOQL.literal(json.forkee.url, "xdd:url")),
+					WOQL.add_triple("v:Fork", "gitHub_fork_created_at", WOQL.literal(json.forkee.created_at, "xsd:dateTime")),
+					WOQL.add_triple("v:Fork", "gitHub_fork_updated_at", WOQL.literal(json.forkee.updated_at, "xsd:dateTime")),
+					WOQL.add_triple("v:Fork", "gitHub_fork_pushed_at", WOQL.literal(json.forkee.pushed_at, "xsd:dateTime"))
+				),
+				updateUserQuery, updateRepoQuery,
+				WOQL.and(
+					WOQL.add_triple("v:User", "gitHub_user_fork", "v:Fork"),
+					WOQL.add_triple("v:Repo", "gitHub_repo_fork", "v:Fork")
+				)
+			)
 	}
-//WOQL.add_triple("v:Issue", "gitHub_issue_closed_at", WOQL.literal(json.issue.closed_at, "xsd:dateTime")),
 }
 
 const constructQueryFromJson=(json)=>{
 	let actionType=getGitHubActionType(json)
+	console.log("actionType",actionType)
 	return getQuery(json, actionType)
 }
 
 function query(json){
-	console.log("^^^^^^^^^^^^^^^^^^^^^^^^", json)
+	console.log("%%%%%%%", json)
 	let q=constructQueryFromJson(json)
 	console.log("************", q)
 	return q
