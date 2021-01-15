@@ -1,0 +1,261 @@
+{
+   "action":"created",
+   "starred_at":"2021-01-08T17:20:59Z",
+   "repository":{
+      "id":327894826,
+      "node_id":"MDEwOlJlcG9zaXRvcnkzMjc4OTQ4MjY=",
+      "name":"myDev",
+      "full_name":"KittyJose/myDev",
+      "private":false,
+      "owner":{
+         "login":"KittyJose",
+         "id":54106287,
+         "node_id":"MDQ6VXNlcjU0MTA2Mjg3",
+         "avatar_url":"https://avatars3.githubusercontent.com/u/54106287?v=4",
+         "gravatar_id":"",
+         "url":"https://api.github.com/users/KittyJose",
+         "html_url":"https://github.com/KittyJose",
+         "followers_url":"https://api.github.com/users/KittyJose/followers",
+         "following_url":"https://api.github.com/users/KittyJose/following{/other_user}",
+         "gists_url":"https://api.github.com/users/KittyJose/gists{/gist_id}",
+         "starred_url":"https://api.github.com/users/KittyJose/starred{/owner}{/repo}",
+         "subscriptions_url":"https://api.github.com/users/KittyJose/subscriptions",
+         "organizations_url":"https://api.github.com/users/KittyJose/orgs",
+         "repos_url":"https://api.github.com/users/KittyJose/repos",
+         "events_url":"https://api.github.com/users/KittyJose/events{/privacy}",
+         "received_events_url":"https://api.github.com/users/KittyJose/received_events",
+         "type":"User",
+         "site_admin":false
+      },
+      "html_url":"https://github.com/KittyJose/myDev",
+      "description":null,
+      "fork":false,
+      "url":"https://api.github.com/repos/KittyJose/myDev",
+      "forks_url":"https://api.github.com/repos/KittyJose/myDev/forks",
+      "keys_url":"https://api.github.com/repos/KittyJose/myDev/keys{/key_id}",
+      "collaborators_url":"https://api.github.com/repos/KittyJose/myDev/collaborators{/collaborator}",
+      "teams_url":"https://api.github.com/repos/KittyJose/myDev/teams",
+      "hooks_url":"https://api.github.com/repos/KittyJose/myDev/hooks",
+      "issue_events_url":"https://api.github.com/repos/KittyJose/myDev/issues/events{/number}",
+      "events_url":"https://api.github.com/repos/KittyJose/myDev/events",
+      "assignees_url":"https://api.github.com/repos/KittyJose/myDev/assignees{/user}",
+      "branches_url":"https://api.github.com/repos/KittyJose/myDev/branches{/branch}",
+      "tags_url":"https://api.github.com/repos/KittyJose/myDev/tags",
+      "blobs_url":"https://api.github.com/repos/KittyJose/myDev/git/blobs{/sha}",
+      "git_tags_url":"https://api.github.com/repos/KittyJose/myDev/git/tags{/sha}",
+      "git_refs_url":"https://api.github.com/repos/KittyJose/myDev/git/refs{/sha}",
+      "trees_url":"https://api.github.com/repos/KittyJose/myDev/git/trees{/sha}",
+      "statuses_url":"https://api.github.com/repos/KittyJose/myDev/statuses/{sha}",
+      "languages_url":"https://api.github.com/repos/KittyJose/myDev/languages",
+      "stargazers_url":"https://api.github.com/repos/KittyJose/myDev/stargazers",
+      "contributors_url":"https://api.github.com/repos/KittyJose/myDev/contributors",
+      "subscribers_url":"https://api.github.com/repos/KittyJose/myDev/subscribers",
+      "subscription_url":"https://api.github.com/repos/KittyJose/myDev/subscription",
+      "commits_url":"https://api.github.com/repos/KittyJose/myDev/commits{/sha}",
+      "git_commits_url":"https://api.github.com/repos/KittyJose/myDev/git/commits{/sha}",
+      "comments_url":"https://api.github.com/repos/KittyJose/myDev/comments{/number}",
+      "issue_comment_url":"https://api.github.com/repos/KittyJose/myDev/issues/comments{/number}",
+      "contents_url":"https://api.github.com/repos/KittyJose/myDev/contents/{+path}",
+      "compare_url":"https://api.github.com/repos/KittyJose/myDev/compare/{base}...{head}",
+      "merges_url":"https://api.github.com/repos/KittyJose/myDev/merges",
+      "archive_url":"https://api.github.com/repos/KittyJose/myDev/{archive_format}{/ref}",
+      "downloads_url":"https://api.github.com/repos/KittyJose/myDev/downloads",
+      "issues_url":"https://api.github.com/repos/KittyJose/myDev/issues{/number}",
+      "pulls_url":"https://api.github.com/repos/KittyJose/myDev/pulls{/number}",
+      "milestones_url":"https://api.github.com/repos/KittyJose/myDev/milestones{/number}",
+      "notifications_url":"https://api.github.com/repos/KittyJose/myDev/notifications{?since,all,participating}",
+      "labels_url":"https://api.github.com/repos/KittyJose/myDev/labels{/name}",
+      "releases_url":"https://api.github.com/repos/KittyJose/myDev/releases{/id}",
+      "deployments_url":"https://api.github.com/repos/KittyJose/myDev/deployments",
+      "created_at":"2021-01-08T12:19:48Z",
+      "updated_at":"2021-01-08T17:20:59Z",
+      "pushed_at":"2021-01-08T15:11:13Z",
+      "git_url":"git://github.com/KittyJose/myDev.git",
+      "ssh_url":"git@github.com:KittyJose/myDev.git",
+      "clone_url":"https://github.com/KittyJose/myDev.git",
+      "svn_url":"https://github.com/KittyJose/myDev",
+      "homepage":null,
+      "size":0,
+      "stargazers_count":2,
+      "watchers_count":2,
+      "language":"JavaScript",
+      "has_issues":true,
+      "has_projects":true,
+      "has_downloads":true,
+      "has_wiki":true,
+      "has_pages":false,
+      "forks_count":0,
+      "mirror_url":null,
+      "archived":false,
+      "disabled":false,
+      "open_issues_count":0,
+      "license":null,
+      "forks":0,
+      "open_issues":0,
+      "watchers":2,
+      "default_branch":"master"
+   },
+   "sender":{
+      "login":"KittyJose",
+      "id":54106287,
+      "node_id":"MDQ6VXNlcjU0MTA2Mjg3",
+      "avatar_url":"https://avatars3.githubusercontent.com/u/54106287?v=4",
+      "gravatar_id":"",
+      "url":"https://api.github.com/users/KittyJose",
+      "html_url":"https://github.com/KittyJose",
+      "followers_url":"https://api.github.com/users/KittyJose/followers",
+      "following_url":"https://api.github.com/users/KittyJose/following{/other_user}",
+      "gists_url":"https://api.github.com/users/KittyJose/gists{/gist_id}",
+      "starred_url":"https://api.github.com/users/KittyJose/starred{/owner}{/repo}",
+      "subscriptions_url":"https://api.github.com/users/KittyJose/subscriptions",
+      "organizations_url":"https://api.github.com/users/KittyJose/orgs",
+      "repos_url":"https://api.github.com/users/KittyJose/repos",
+      "events_url":"https://api.github.com/users/KittyJose/events{/privacy}",
+      "received_events_url":"https://api.github.com/users/KittyJose/received_events",
+      "type":"User",
+      "site_admin":false
+   }
+}
+
+
+{
+  "@context": {
+    "api": "http://terminusdb.com/schema/api#",
+    "doc": "terminusdb:///data/",
+    "layer": "http://terminusdb.com/schema/layer#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "ref": "http://terminusdb.com/schema/ref#",
+    "repo": "http://terminusdb.com/schema/repository#",
+    "scm": "terminusdb:///schema#",
+    "system": "http://terminusdb.com/schema/system#",
+    "terminus": "http://terminusdb.com/schema/system#",
+    "vio": "http://terminusdb.com/schema/vio#",
+    "woql": "http://terminusdb.com/schema/woql#",
+    "xdd": "http://terminusdb.com/schema/xdd#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@id": "doc:star_1",
+  "@type": "scm:Star",
+  "rdfs:label": {
+        "@language": "en",
+        "@value": "teste"
+   },
+  "scm:started_at":{
+      "@type": "xsd:dateTime",
+      "@value":"2021-01-08T17:20:59Z"
+  },
+  "scm:action":{
+      "@type": "xsd:string",
+      "@value":"Created"
+  },
+  "scm:repository": {
+      "@id": "doc:repo_1",
+      "@type": "scm:Repository",
+      "rdfs:label": "MYDEV",
+      "scm:name": {
+            "@language": "en",
+            "@value": "my dev repo "
+       },
+       "scm:full_name": {
+             "@language": "en",
+             "@value": "fff name"
+        },
+        "scm:star": {
+              "@id": "doc:star_1",
+              "@type": "scm:Star"
+         }
+
+  },
+  "scm:user": {
+      "@id": "doc:user_1",
+      "@type": "scm:User",
+      "rdfs:label": "KITZKAN",
+      "scm:login": {
+            "@language": "en",
+            "@value": "kitzkan"
+       },
+       "scm:html_url": {
+           "@language": "en",
+           "@value": "https://kitzkan/doc"
+       },
+       "scm:star": {
+             "@id": "doc:star_1",
+             "@type": "scm:Star"
+        }
+  },
+}
+
+
+
+{
+  "@context": {
+    "api": "http://terminusdb.com/schema/api#",
+    "doc": "terminusdb:///data/",
+    "layer": "http://terminusdb.com/schema/layer#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "ref": "http://terminusdb.com/schema/ref#",
+    "repo": "http://terminusdb.com/schema/repository#",
+    "scm": "terminusdb:///schema#",
+    "system": "http://terminusdb.com/schema/system#",
+    "terminus": "http://terminusdb.com/schema/system#",
+    "vio": "http://terminusdb.com/schema/vio#",
+    "woql": "http://terminusdb.com/schema/woql#",
+    "xdd": "http://terminusdb.com/schema/xdd#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "scm:Repository": {
+      "@id": "doc:repo_1",
+      "@type": "scm:Repository",
+      "rdfs:label": "MYDEV",
+      "scm:name": {
+            "@language": "en",
+            "@value": "my dev repo "
+       },
+       "scm:full_name": {
+             "@language": "en",
+             "@value": "fff name"
+        },
+        "scm:star": {
+              "@id": "doc:star_1",
+              "@type": "scm:Star"
+         }
+
+  },
+  "scm:User": {
+      "@id": "doc:user_1",
+      "@type": "scm:User",
+      "rdfs:label": "KITZKAN",
+      "scm:login": {
+            "@language": "en",
+            "@value": "kitzkan"
+       },
+       "scm:html_url": {
+           "@language": "en",
+           "@value": "https://kitzkan/doc"
+       },
+       "scm:star": {
+             "@id": "doc:star_1",
+             "@type": "scm:Star"
+        }
+  },
+  "scm:Star": {
+      "@id": "doc:star_1",
+      "@type": "scm:Star",
+      "rdfs:label": {
+            "@language": "en",
+            "@value": "teste"
+       },
+      "scm:started_at":{
+          "@type": "xsd:dateTime",
+          "@value":"2021-01-08T17:20:59Z"
+      },
+      "scm:action":{
+          "@type": "xsd:string",
+          "@value":"Created"
+      },
+  }
+}
