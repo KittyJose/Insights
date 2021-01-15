@@ -49,8 +49,9 @@ const getQuery=(json, type)=>{
 				updateUserQuery,
 				updateRepoQuery,
 				WOQL.and(
-					WOQL.update_triple("v:User", "gitHub_user_star", "v:Star"),
-					WOQL.update_triple("v:Repo", "gitHub_repository_star", "v:Star")
+					WOQL.add_triple("v:User", "gitHub_user_star", "v:Star"),
+					WOQL.add_triple("v:Repo", "gitHub_repository_star", "v:Star"),
+					WOQL.update_triple("v:Repo", "gitHub_stargazers_count", WOQL.literal(json.repository.stargazers_count, "xsd:integer"))
 				)
 			)
 		case CONST.UNSTAR:
@@ -66,8 +67,9 @@ const getQuery=(json, type)=>{
 				updateUserQuery,
 				updateRepoQuery,
 				WOQL.and(
-					WOQL.update_triple("v:User", "gitHub_user_star", "v:Star"),
-					WOQL.update_triple("v:Repo", "gitHub_repository_star", "v:Star")
+					WOQL.add_triple("v:User", "gitHub_user_star", "v:Star"),
+					WOQL.add_triple("v:Repo", "gitHub_repository_star", "v:Star"),
+					WOQL.update_triple("v:Repo", "gitHub_stargazers_count", WOQL.literal(json.repository.stargazers_count, "xsd:integer"))
 				)
 			)
 		case CONST.COMMIT:
@@ -156,7 +158,7 @@ const getQuery=(json, type)=>{
 
 const constructQueryFromJson=(json)=>{
 	let actionType=getGitHubActionType(json)
-	console.log("actionType",actionType)
+	//console.log("actionType",actionType)
 	return getQuery(json, actionType)
 }
 
