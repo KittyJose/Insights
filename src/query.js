@@ -73,8 +73,24 @@ const getQuery=(json, type)=>{
 				)
 			)
 		case CONST.COMMIT:
-			let commitID=json.after
-			var q=WOQL.and(
+			let commits=[]
+			json.commits.map((item)=>{
+				let commitID=item.id
+				let commitV="v:Commit"+commitID
+				commits.push(
+					WOQL.and(
+						WOQL.idgen("doc:GitHubCommit", [commitID], commitV),
+						WOQL.add_triple(commitV, "type", "scm:GitHubCommit"),
+						WOQL.add_triple(commitV, "gitHub_commit_message", item.message),
+	          			WOQL.add_triple(commitV, "gitHub_commit_at", WOQL.literal(item.timestamp, "xsd:dateTime")),
+						WOQL.add_triple(commitV, "gitHub_commit_url", WOQL.literal(item.url, "xdd:url")),
+						WOQL.add_triple("v:User", "gitHub_user_commit", commitV),
+						WOQL.add_triple("v:Repo", "gitHub_repository_commit", commitV)
+					)
+				)
+			})
+			var q=WOQL.and(updateUserQuery, updateRepoQuery, WOQL.and(...commits))
+			/*var q=WOQL.and(
 				WOQL.and(
 					WOQL.idgen("doc:GitHubCommit", [commitID], "v:Commit"),
 					WOQL.add_triple("v:Commit", "type", "scm:GitHubCommit"),
@@ -88,7 +104,7 @@ const getQuery=(json, type)=>{
 					WOQL.add_triple("v:User", "gitHub_user_commit", "v:Commit"),
 					WOQL.add_triple("v:Repo", "gitHub_repository_commit", "v:Commit")
 				)
-			)
+			)*/
 			if (json.pusher.email)
 				return WOQL.and(q, WOQL.update_triple("v:User", "gitHub_user_email", json.pusher.email))
 			else return q
