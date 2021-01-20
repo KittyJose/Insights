@@ -5,7 +5,7 @@ const isJson=require('./utils')
 
 
 function getGitHubActionType (json) {
-	if (json.action==CONST.ACTION.CREATED && json.starred_at)
+	if (json.action==CONST.ACTION.STARTED)
 		return CONST.STAR
 	else if (json.action==CONST.ACTION.DELETED && json.starred_at==null)
 		return CONST.UNSTAR
@@ -34,17 +34,20 @@ const getQuery=(json, type)=>{
 		WOQL.idgen("doc:GitHubRepo", [repoID], "v:Repo"),
 		WOQL.update_triple("v:Repo", "type", "scm:GitHubRepository"),
 		WOQL.update_triple("v:Repo", "label", json.repository.name),
+		WOQL.update_triple("v:Repo", "gitHub_repository_full_name", json.repository.full_name),
 		WOQL.update_triple("v:Repo", "gitHub_repository_html_url", WOQL.literal(json.repository.html_url, "xdd:url"))
 	)
 
 	switch(type){
 		case CONST.STAR:
+			var curr = new Date();
+			var staredAt = curr.toISOString();
 			return WOQL.and (
 				WOQL.and(
 					WOQL.idgen("doc:GitHubStar", [repoID, userID], "v:Star"),
 					WOQL.add_triple("v:Star", "type", "scm:GitHubStar"),
 					WOQL.update_triple("v:Star", "action", json.action),
-					WOQL.update_triple("v:Star", "starred_at", WOQL.literal(json.starred_at, "xsd:dateTime"))
+					WOQL.update_triple("v:Star", "starred_at", WOQL.literal(staredAt, "xsd:dateTime"))
 				),
 				updateUserQuery,
 				updateRepoQuery,
@@ -84,27 +87,13 @@ const getQuery=(json, type)=>{
 						WOQL.add_triple(commitV, "gitHub_commit_message", item.message),
 	          			WOQL.add_triple(commitV, "gitHub_commit_at", WOQL.literal(item.timestamp, "xsd:dateTime")),
 						WOQL.add_triple(commitV, "gitHub_commit_url", WOQL.literal(item.url, "xdd:url")),
+						WOQL.add_triple(commitV, "gitHub_commit_ref", json.ref),
 						WOQL.add_triple("v:User", "gitHub_user_commit", commitV),
 						WOQL.add_triple("v:Repo", "gitHub_repository_commit", commitV)
 					)
 				)
 			})
 			var q=WOQL.and(updateUserQuery, updateRepoQuery, WOQL.and(...commits))
-			/*var q=WOQL.and(
-				WOQL.and(
-					WOQL.idgen("doc:GitHubCommit", [commitID], "v:Commit"),
-					WOQL.add_triple("v:Commit", "type", "scm:GitHubCommit"),
-					WOQL.add_triple("v:Commit", "gitHub_commit_ref", json.ref),
-					WOQL.add_triple("v:Commit", "gitHub_commit_message", json.commits[0].message),
-					WOQL.add_triple("v:Commit", "gitHub_commit_at", WOQL.literal(json.commits[0].timestamp, "xsd:dateTime")),
-					WOQL.add_triple("v:Commit", "gitHub_commit_url", WOQL.literal(json.commits[0].url, "xdd:url"))
-				),
-				updateUserQuery, updateRepoQuery,
-				WOQL.and(
-					WOQL.add_triple("v:User", "gitHub_user_commit", "v:Commit"),
-					WOQL.add_triple("v:Repo", "gitHub_repository_commit", "v:Commit")
-				)
-			)*/
 			if (json.pusher.email)
 				return WOQL.and(q, WOQL.update_triple("v:User", "gitHub_user_email", json.pusher.email))
 			else return q
@@ -124,7 +113,8 @@ const getQuery=(json, type)=>{
 				updateUserQuery, updateRepoQuery,
 				WOQL.and(
 					WOQL.add_triple("v:User", "gitHub_user_issue", "v:Issue"),
-					WOQL.add_triple("v:Repo", "gitHub_repository_issue", "v:Issue")
+					WOQL.add_triple("v:Repo", "gitHub_repository_issue", "v:Issue"),
+					WOQL.update_triple("v:Repo", "gitHub_open_issues_count", WOQL.literal(json.repository.open_issues_count, "xsd:integer"))
 				)
 			)
 			if (json.issue.closed_at)

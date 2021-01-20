@@ -2,6 +2,8 @@ WOQL.and(
 	WOQL.doctype("GitHubRepository")
         .label("GitHub Repository")
         .description("A GitHub repository of interest")
+		.property("gitHub_repository_full_name", "string")
+		    .label("GitHub Repository Full Name")
 		.property("gitHub_repository_html_url", "xdd:url")
 		    .label("GitHub Repository Url")
 		.property("gitHub_repository_star", "scm:GitHubStar")
@@ -20,8 +22,6 @@ WOQL.and(
 			.label("GitHub Forks Count")
 		.property("gitHub_open_issues_count", "integer")
 			.label("GitHub Open Issues Count")
-		.property("gitHub_forks_commit", "integer")
-			.label("GitHub Commit Count")
 			,
     WOQL.doctype("GitHubUser")
 		.label("GitHub User")

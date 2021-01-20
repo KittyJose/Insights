@@ -3,7 +3,8 @@ module.exports = {
 	UNSTAR:"UNSTAR",
 	ACTION: {
 		CREATED: 'created',
-		DELETED: 'deleted'
+		DELETED: 'deleted',
+		STARTED: 'started'
 	},
 	COMMIT: "COMMIT",
 	ISSUE: "ISSUE",
