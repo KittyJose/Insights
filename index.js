@@ -1,8 +1,10 @@
 const DBConnect = require("./src/connect");
 
-module.exports = (url, password, json) => {
-    let config = {server : "https://127.0.0.1:6363", key : password, user: "admin", db:"Doc"}
-    DBConnect(config, json)
+module.exports = (database, key, json) => {
+    //let config = {server : "https://127.0.0.1:6363", key : "root", user: "admin", db:"Doc"}
+    //DBConnect(config, json)
+    let inp= `database: ${database}, key: ${key}, json: ${json}`;
+    console.log(inp)
 
-    return `url: ${url}, password: ${password}, json: ${json}`;
+    return `database: ${database}, key: ${key}, json: ${json}`;
 }
