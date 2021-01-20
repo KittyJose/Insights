@@ -17,7 +17,9 @@ try {
     console.log(`key ${key}!`)
     console.log(`json ${json}!`)
     console.log("json.type", typeof json)
-    console.log("json.event", json.job)
+    let data=JSON.parse(json)
+    console.log("data.type", typeof data)
+    console.log("data.event", data.job)
 
     /*const getHeader = async () => {
         const options = {
