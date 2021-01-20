@@ -3,10 +3,11 @@
 
 const core = require('./node_modules/@actions/core')
 const github = require('./node_modules/@actions/github')
-//const axios =  require('axios')
+//const axios = require('axios');
+
 
 try {
-    let axiosHub = axios.create()
+    //let axiosHub = axios.create()
 
     let databaseUrl = core.getInput('database')
     let key = core.getInput('key')
