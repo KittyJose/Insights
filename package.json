@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -17,7 +18,7 @@
     "url": "https://github.com/KittyJose/Insights/issues"
   },
   "homepage": "https://github.com/KittyJose/Insights#readme",
-  "dependencies": {   
+  "dependencies": {
     "axios": "^0.21.1"
   }
 }
