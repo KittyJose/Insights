@@ -13,7 +13,7 @@ try {
     let key = core.getInput('key')
     let json = core.getInput('json')
 
-    console.log(`database ${databaseUrl}!`)
+    console.log(`database TEST ${databaseUrl}!`)
     console.log(`key ${key}!`)
     console.log(`json ${json}!`)
 
