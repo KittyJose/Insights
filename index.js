@@ -42,7 +42,7 @@ try {
         data: {json}
     }) */
 
-    core.setOutput("results", results);
+    core.setOutput("results", "ready");
 
 } catch (error) {
     core.setFailed(error.message);
