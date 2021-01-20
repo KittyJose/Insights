@@ -37,13 +37,6 @@ try {
     }
 
     postCall()
-
-    const results = axios({
-        method: 'post',
-        url: '/kitty',
-        data: {data.event}
-    })
-
     core.setOutput("results", "ready");
 
 } catch (error) {
