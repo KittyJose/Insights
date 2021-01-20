@@ -17,8 +17,7 @@
     "url": "https://github.com/KittyJose/Insights/issues"
   },
   "homepage": "https://github.com/KittyJose/Insights#readme",
-  "dependencies": {
-    "@terminusdb/terminusdb-client": "file:../terminusdb-client",
+  "dependencies": {   
     "axios": "^0.21.1"
   }
 }
