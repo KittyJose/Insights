@@ -4,8 +4,6 @@
 const core = require('./node_modules/@actions/core');
 const github = require('./node_modules/@actions/github');
 
-console.log("I am here s")
-
 try {
 
   const database = core.getInput('database');
@@ -17,7 +15,9 @@ try {
 
   const json = core.getInput('json');
 
-  core.setOutput("results", "teady");
+  console.log(`json ${json}!`);
+
+  core.setOutput("results", "some results");
 } catch (error) {
   core.setFailed(error.message);
 }
