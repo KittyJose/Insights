@@ -3,11 +3,11 @@
 
 const core = require('./node_modules/@actions/core')
 const github = require('./node_modules/@actions/github')
-//const axios = require('axios');
+const axios = require('axios');
 
 
 try {
-    //let axiosHub = axios.create()
+    let axiosHub = axios.create()
 
     let databaseUrl = core.getInput('database')
     let key = core.getInput('key')
@@ -16,10 +16,8 @@ try {
     console.log(`database ${databaseUrl}!`)
     console.log(`key ${key}!`)
     console.log(`json ${json}!`)
-    console.log("json.type", typeof json)
+
     let data=JSON.parse(json)
-    console.log("data.type", typeof data)
-    console.log("data.event", data.job)
 
     /*const getHeader = async () => {
         const options = {
@@ -42,7 +40,7 @@ try {
     const results = axios({
         method: 'post',
         url: '/kitty',
-        data: {json}
+        data: {data.event}
     }) */
 
     core.setOutput("results", "ready");
