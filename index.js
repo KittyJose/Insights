@@ -16,7 +16,8 @@ try {
     console.log(`database ${databaseUrl}!`)
     console.log(`key ${key}!`)
     console.log(`json ${json}!`)
-    console.log(`json ${json.job}!`)
+    console.log("json.type", typeof json)
+    console.log("json.event", json.job)
 
     /*const getHeader = async () => {
         const options = {
