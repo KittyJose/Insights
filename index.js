@@ -19,7 +19,7 @@ try {
 
     let data=JSON.parse(json)
 
-    /*const getHeader = async () => {
+    const getHeader = async () => {
         const options = {
             mode: 'cors',
             redirect: 'follow',
@@ -31,7 +31,8 @@ try {
 
     const postCall = async () => {
         const options = await getHeader()
-        const result = await axiosHub.post(`${databaseUrl}`, json, options)
+        console.log('kitty test')
+        //const result = await axiosHub.post(`${databaseUrl}`, json, options)
         return result
     }
 
@@ -41,7 +42,7 @@ try {
         method: 'post',
         url: '/kitty',
         data: {data.event}
-    }) */
+    })
 
     core.setOutput("results", "ready");
 
