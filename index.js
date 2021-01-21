@@ -5,13 +5,10 @@
 //const github = require('./node_modules/@actions/github')
 
 
-const args = require('minimist')(process.argv.slice(2))
-args['database'] //joe
-console.log(args['database'] )
 
-/*process.argv.forEach((val, index) => {
+process.argv.forEach((val, index) => {
   console.log(`${index}: ${val}`)
-})*/
+})
 
 /*
 const core = require('@actions/core')
