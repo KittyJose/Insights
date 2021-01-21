@@ -11,9 +11,14 @@ const axios = require('axios');
 try {
     let axiosHub = axios.create()
 
-    let databaseUrl = core.getInput('database')
+    /*let databaseUrl = core.getInput('database')
     let key = core.getInput('key')
-    //let json = core.getInput('json')
+    let json = core.getInput('json')   */
+
+
+    let databaseUrl = core.getInput('DATABASE')
+    let key = core.getInput('KEY')
+    let json = core.getInput('JSON')
 
     console.log(`database TEST ${databaseUrl}!`)
     console.log(`key ${key}!`)
