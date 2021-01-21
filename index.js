@@ -12,9 +12,9 @@ process.argv.forEach((val, index) => {
 
 /*
 const core = require('@actions/core')
-const github = require('@actions/github')
+const github = require('@actions/github')*/
 const axios = require('axios');
-
+/*
 
 try {
     let axiosHub = axios.create()
