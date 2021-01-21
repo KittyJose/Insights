@@ -3,6 +3,7 @@
 
 //const core = require('./node_modules/@actions/core')
 //const github = require('./node_modules/@actions/github')
+require('dotenv').config()
 const core = require('@actions/core')
 const github = require('@actions/github')
 const axios = require('axios');
@@ -16,9 +17,11 @@ try {
     let json = core.getInput('json')   */
 
 
-    let databaseUrl = core.getInput('DATABASE')
-    let key = core.getInput('KEY')
-    let json = core.getInput('JSON')
+    let databaseUrl = process.env.DATABASE
+    let key = process.env.KEY
+    let json = process.env.JSON
+
+    process.env
 
     console.log(`database TEST ${databaseUrl}!`)
     console.log(`key ${key}!`)
