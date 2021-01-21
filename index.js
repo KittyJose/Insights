@@ -5,6 +5,7 @@
 //const github = require('./node_modules/@actions/github')
 
 
+<<<<<<< HEAD
 const args = require('minimist')(process.argv.slice(2))
 args['database'] //joe
 console.log(args['database'] )
@@ -12,12 +13,18 @@ console.log(args['database'] )
 /*process.argv.forEach((val, index) => {
   console.log(`${index}: ${val}`)
 })*/
+=======
+
+process.argv.forEach((val, index) => {
+  console.log(`${index}: ${val}`)
+})
+>>>>>>> 7730bedbb9adddcebe9ada8fdb231db618d3117b
 
 /*
 const core = require('@actions/core')
-const github = require('@actions/github')
+const github = require('@actions/github')*/
 const axios = require('axios');
-
+/*
 
 try {
     let axiosHub = axios.create()
