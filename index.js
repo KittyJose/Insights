@@ -19,7 +19,7 @@ try {
     console.log(`key ${key}!`)
     console.log(`json ${json}!`)
 
-    /*let data=JSON.parse(json)
+    let data=JSON.parse(json)
 
     const getHeader = async () => {
         const options = {
@@ -38,7 +38,7 @@ try {
         //return result
     }
 
-    postCall()*/
+    postCall()
     core.setOutput("results", "ready");
 
 } catch (error) {
