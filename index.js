@@ -4,6 +4,16 @@
 //const core = require('./node_modules/@actions/core')
 //const github = require('./node_modules/@actions/github')
 
+
+const args = require('minimist')(process.argv.slice(2))
+args['database'] //joe
+console.log(args['database'] )
+
+/*process.argv.forEach((val, index) => {
+  console.log(`${index}: ${val}`)
+})*/
+
+/*
 const core = require('@actions/core')
 const github = require('@actions/github')
 const axios = require('axios');
@@ -15,7 +25,7 @@ try {
     let databaseUrl = core.getInput('database')
     let key = core.getInput('key')
     let json = core.getInput('json')
-  
+
 
     console.log(`database TEST ${databaseUrl}!`)
     console.log(`key ${key}!`)
@@ -43,10 +53,10 @@ try {
     postCall()
     core.setOutput("results", "ready");*/
 
-} catch (error) {
+/*} catch (error) {
     core.setFailed(error.message);
 }
-
+*/
 
 module.exports = (database, key, json) => {
     //let config = {server : "https://127.0.0.1:6363", key : "root", user: "admin", db:"Doc"}
