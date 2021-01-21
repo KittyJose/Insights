@@ -13,13 +13,13 @@ try {
 
     let databaseUrl = core.getInput('database')
     let key = core.getInput('key')
-    let json = core.getInput('json')
+    //let json = core.getInput('json')
 
     console.log(`database TEST ${databaseUrl}!`)
     console.log(`key ${key}!`)
     console.log(`json ${json}!`)
 
-    let data=JSON.parse(json)
+    /*let data=JSON.parse(json)
 
     const getHeader = async () => {
         const options = {
@@ -38,7 +38,7 @@ try {
         //return result
     }
 
-    postCall()
+    postCall()*/
     core.setOutput("results", "ready");
 
 } catch (error) {
