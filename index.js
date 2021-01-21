@@ -32,8 +32,8 @@ try {
     const postCall = async () => {
         const options = await getHeader()
         console.log('kitty test')
-        //const result = await axiosHub.post(`${databaseUrl}`, json, options)
-        return result
+        //const result = await axiosHub.post(`${databaseUrl + '/kitty'}`, data.event, options)
+        //return result
     }
 
     postCall()

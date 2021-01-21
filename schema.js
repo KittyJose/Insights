@@ -47,8 +47,6 @@ WOQL.and(
         .label("GitHub Star")
 		.property("starred_at", "dateTime")
 			.label("Starred at")
-		.property("unstarred_at", "dateTime")
-			.label("Unstarred at")
 		.property("action", "string")
 			.label("Action"),
 	WOQL.add_class("GitHubCommit")

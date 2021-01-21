@@ -5,16 +5,16 @@ const isJson=require('./utils')
 
 
 function getGitHubActionType (json) {
-	if (json.action==CONST.ACTION.STARTED)
+	if (json.action==CONST.STARTED)
 		return CONST.STAR
-	else if (json.action==CONST.ACTION.DELETED && json.starred_at==null)
-		return CONST.UNSTAR
 	else if (json.ref)
 		return CONST.COMMIT
 	else if (typeof json.issue=="object")
 		return CONST.ISSUE
 	else if (typeof json.forkee=="object")
 		return CONST.FORK
+	else if (typeof json.pull_request=="object")
+		return CONST.PULL_REQUEST
 }
 
 const getQuery=(json, type)=>{
@@ -48,24 +48,6 @@ const getQuery=(json, type)=>{
 					WOQL.add_triple("v:Star", "type", "scm:GitHubStar"),
 					WOQL.update_triple("v:Star", "action", json.action),
 					WOQL.update_triple("v:Star", "starred_at", WOQL.literal(staredAt, "xsd:dateTime"))
-				),
-				updateUserQuery,
-				updateRepoQuery,
-				WOQL.and(
-					WOQL.add_triple("v:User", "gitHub_user_star", "v:Star"),
-					WOQL.add_triple("v:Repo", "gitHub_repository_star", "v:Star"),
-					WOQL.update_triple("v:Repo", "gitHub_stargazers_count", WOQL.literal(json.repository.stargazers_count, "xsd:integer"))
-				)
-			)
-		case CONST.UNSTAR:
-			var curr = new Date(); // unstar event doesn not have a time stamp
-			var unstartedAt = curr.toISOString();
-			return WOQL.and (
-				WOQL.and(
-					WOQL.idgen("doc:GitHubStar", [repoID, userID], "v:Star"),
-					WOQL.add_triple("v:Star", "type", "scm:GitHubStar"),
-					WOQL.update_triple("v:Star", "action", json.action),
-					WOQL.update_triple("v:Star", "unstarred_at", WOQL.literal(unstartedAt, "xsd:dateTime"))
 				),
 				updateUserQuery,
 				updateRepoQuery,
