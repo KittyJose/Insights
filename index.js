@@ -24,7 +24,7 @@ try {
     console.log(`key ${key}!`)
     console.log(`json ${json}!`)
 
-    let data=JSON.parse(json)
+    /*let data=JSON.parse(json)
 
     const getHeader = async () => {
         const options = {
@@ -44,7 +44,7 @@ try {
     }
 
     postCall()
-    core.setOutput("results", "ready");
+    core.setOutput("results", "ready");*/
 
 } catch (error) {
     core.setFailed(error.message);
