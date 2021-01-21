@@ -5,23 +5,24 @@
 //const github = require('./node_modules/@actions/github')
 
 
-
-process.argv.forEach((val, index) => {
-  console.log(`${index}: ${val}`)
-})
-
 /*
 const core = require('@actions/core')
 const github = require('@actions/github')*/
 const axios = require('axios');
-/*
+let inputs=[]
+
+let args = process.argv.slice(2);
+
+console.log('database 0', args[0])
+console.log('key 1', args[1])
+console.log('json 1', args[2])
 
 try {
     let axiosHub = axios.create()
 
-    let databaseUrl = core.getInput('database')
+    /*let databaseUrl = core.getInput('database')
     let key = core.getInput('key')
-    let json = core.getInput('json')
+    let json = core.getInput('json')  */
 
 
     console.log(`database TEST ${databaseUrl}!`)
@@ -50,10 +51,10 @@ try {
     postCall()
     core.setOutput("results", "ready");*/
 
-/*} catch (error) {
-    core.setFailed(error.message);
+} catch (error) {
+    //core.setFailed(error.message);
 }
-*/
+
 
 module.exports = (database, key, json) => {
     //let config = {server : "https://127.0.0.1:6363", key : "root", user: "admin", db:"Doc"}
