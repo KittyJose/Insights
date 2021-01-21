@@ -1,8 +1,10 @@
 //const DBConnect = require("./src/connect");
 
 
-const core = require('./node_modules/@actions/core')
-const github = require('./node_modules/@actions/github')
+//const core = require('./node_modules/@actions/core')
+//const github = require('./node_modules/@actions/github')
+const core = require('@actions/core')
+const github = require('@actions/github')
 const axios = require('axios');
 
 
