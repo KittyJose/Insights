@@ -1,4 +1,4 @@
-const TerminusClient=require("./../node_modules/@terminusdb/terminusdb-client");
+const TerminusClient=require("@terminusdb/terminusdb-client");
 const query=require("./query")
 
 
