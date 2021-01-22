@@ -27,7 +27,7 @@ const postCall = async (url, key, json) => {
     return result
 }
 
-vars params={}
+var params={}
 
 function getInput() {
     args.map(item => {
