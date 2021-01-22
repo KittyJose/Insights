@@ -14,9 +14,8 @@ let inputs=[]
 let args = process.argv.slice(2)
 //let data=JSON.parse(args[0])
 
-console.log('args', args)
-/*console.log('args[0]', args[0])
-console.log('type of args[0]', typeof args[0])
+//console.log('args', args)
+
 
 
 var data = JSON.parse(args[0]);
@@ -25,7 +24,7 @@ console.log('data', data)
 console.log('type of data', typeof data)
 
 
-console.log('URL', data.url)
+/*
 
 
 console.log('database 0', args[0])
