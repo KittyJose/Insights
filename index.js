@@ -26,6 +26,7 @@ const postCall = async (url, key, json) => {
     return result
 }
 
+console.log("args ***** ", args)
 
 args.map(item => {
     if (item.includes(ARGS.URL)){
@@ -35,6 +36,7 @@ args.map(item => {
         let key=item.substring(ARGS.KEY.length, item.length)
     }
     else if (item.includes(ARGS.JSON)){
+        console.log("JSON ***** ", json)
         let json=item.substring(ARGS.JSON.length, item.length)
     }
 
