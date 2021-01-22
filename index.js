@@ -5,7 +5,7 @@ const ARGS=require('./src/constants/args')
 //const core = require('./node_modules/@actions/core')
 //const github = require('./node_modules/@actions/github')
 
-let opts = {server : "https://127.0.0.1:6363/", key : key, user: "admin", db: "Doc"}
+let opts = {server : "https://127.0.0.1:6363/", key : "root", user: "admin", db: "Doc"}
 let args = process.argv.slice(2), url, key, json
 
 const getHeader = async (key) => {
