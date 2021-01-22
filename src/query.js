@@ -151,9 +151,9 @@ const constructQueryFromJson=(json)=>{
 }
 
 function query(json){
-	console.log("%%%%%%%", json)
+	//console.log("%%%%%%%", json)
 	let q=constructQueryFromJson(json.event)
-	console.log("************ QUERY", q)
+	//console.log("******QUERY******", q)
 	return q
 }
 
