@@ -2,11 +2,19 @@ const DBConnect = require("./src/connect");
 const axios = require('axios');
 const ARGS=require('./src/constants/args')
 const TerminusClient=require("@terminusdb/terminusdb-client")
-const core = require('./node_modules/@actions/core')
+const core = require('@actions/core')
 //const github = require('./node_modules/@actions/github')
 
 let opts = {server : "https://127.0.0.1:6363/", key : "root", user: "admin", db: "Doc"}
 let args = process.argv.slice(2), url, key, json
+
+
+const a = core.getInput('database');
+const b = core.getInput('key');
+const c = core.getInput('json');
+console.log('a', a)
+console.log('b', b)
+console.log('c', c)
 
 /*const getHeader = async (key) => {
     const options = {
@@ -41,7 +49,7 @@ args.map(item => {
         dbClient.connect(opts)
     	const WOQL=TerminusClient.WOQL
         let q=WOQL.doctype("testDOC")
-        return await dbClient.query(q).then((results) => {
+        return dbClient.query(q).then((results) => {
 			console.log(results)
 			console.log("*******************")
             return results
