@@ -26,7 +26,6 @@ const postCall = async (url, key, json) => {
     return result
 }
 
-console.log("args ***** ", args)
 
 args.map(item => {
     if (item.includes(ARGS.URL)){
