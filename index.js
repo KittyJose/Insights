@@ -2,8 +2,7 @@ const DBConnect = require("./src/connect");
 const axios = require('axios');
 const ARGS=require('./src/constants/args')
 const TerminusClient=require("@terminusdb/terminusdb-client")
-
-//const core = require('./node_modules/@actions/core')
+const core = require('./node_modules/@actions/core')
 //const github = require('./node_modules/@actions/github')
 
 let opts = {server : "https://127.0.0.1:6363/", key : "root", user: "admin", db: "Doc"}
@@ -42,7 +41,7 @@ args.map(item => {
         dbClient.connect(opts)
     	const WOQL=TerminusClient.WOQL
         let q=WOQL.doctype("testDOC")
-        dbClient.query(q).then((results) => {
+        return await dbClient.query(q).then((results) => {
 			console.log(results)
 			console.log("*******************")
             return results
