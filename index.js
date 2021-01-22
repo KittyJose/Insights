@@ -1,37 +1,56 @@
 //const DBConnect = require("./src/connect");
 
+const ARGS=require('./src/constants/args')
+
 
 //const core = require('./node_modules/@actions/core')
 //const github = require('./node_modules/@actions/github')
 
 
-<<<<<<< HEAD
-const args = require('minimist')(process.argv.slice(2))
-args['database'] //joe
-console.log(args['database'] )
-
-/*process.argv.forEach((val, index) => {
-  console.log(`${index}: ${val}`)
-})*/
-=======
-
-process.argv.forEach((val, index) => {
-  console.log(`${index}: ${val}`)
-})
->>>>>>> 7730bedbb9adddcebe9ada8fdb231db618d3117b
-
 /*
 const core = require('@actions/core')
 const github = require('@actions/github')*/
 const axios = require('axios');
+let args = process.argv.slice(2)
+var url, key, json
+
+
+
+args.map(item => {
+    if (item.includes(ARGS.URL)){
+        url=item.substring(ARGS.URL.length, item.length)
+    }
+    else if (item.includes(ARGS.KEY)){
+        key=item.substring(ARGS.KEY.length, item.length)
+    }
+    else if (item.includes(ARGS.JSON)){
+        json=item.substring(ARGS.JSON.length, item.length)
+    }
+
+})
+
+console.log('url', url)
+console.log('key', key)
+console.log('json', json)
+
+
 /*
+
+
+console.log('database 0', args[0])
+console.log('key 1', args[1])
+console.log('json 1', args[2*/
+
+
+
+
 
 try {
     let axiosHub = axios.create()
 
-    let databaseUrl = core.getInput('database')
+    /*let databaseUrl = core.getInput('database')
     let key = core.getInput('key')
-    let json = core.getInput('json')
+    let json = core.getInput('json')  */
 
 
     console.log(`database TEST ${databaseUrl}!`)
@@ -60,10 +79,10 @@ try {
     postCall()
     core.setOutput("results", "ready");*/
 
-/*} catch (error) {
-    core.setFailed(error.message);
+} catch (error) {
+    //core.setFailed(error.message);
 }
-*/
+
 
 module.exports = (database, key, json) => {
     //let config = {server : "https://127.0.0.1:6363", key : "root", user: "admin", db:"Doc"}
