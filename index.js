@@ -38,11 +38,13 @@ args.map(item => {
     else if (item.includes(ARGS.JSON)){        
         let json=item.substring(ARGS.JSON.length, item.length)
         console.log("JSON ***** ", json)
+        console.log("/////////////////////////////////////type of", typeof json)
     }
 
 })
 
 let opts = {server : "https://127.0.0.1:6363/", key : key, user: "admin", db: "Doc"}
+console.log("................. jsonf", json)
 console.log("type of", typeof json)
 DBConnect(opts, json)
 //DBConnect(opts, JSON.parse(json))
