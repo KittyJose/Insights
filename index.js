@@ -41,5 +41,7 @@ args.map(item => {
 })
 
 let opts = {server : "https://127.0.0.1:6363/", key : key, user: "admin", db: "Doc"}
-DBConnect(opts, JSON.parse(json))
+console.log("type of", typeof json)
+DBConnect(opts, json)
+//DBConnect(opts, JSON.parse(json))
 //postCall(url, key, json)
