@@ -1,5 +1,7 @@
 //const DBConnect = require("./src/connect");
 
+const ARGS=require('./src/constants/args')
+
 
 //const core = require('./node_modules/@actions/core')
 //const github = require('./node_modules/@actions/github')
@@ -9,19 +11,27 @@
 const core = require('@actions/core')
 const github = require('@actions/github')*/
 const axios = require('axios');
-let inputs=[]
-
 let args = process.argv.slice(2)
-//let data=JSON.parse(args[0])
-
-//console.log('args', args)
+var url, key, json
 
 
 
-var data = JSON.parse(args[0]);
+args.map(item => {
+    if (item.includes(ARGS.URL)){
+        url=item.substring(ARGS.URL.length, item.length)
+    }
+    else if (item.includes(ARGS.KEY)){
+        key=item.substring(ARGS.KEY.length, item.length)
+    }
+    else if (item.includes(ARGS.JSON)){
+        json=item.substring(ARGS.JSON.length, item.length)
+    }
 
-console.log('data', data)
-console.log('type of data', typeof data)
+})
+
+console.log('url', url)
+console.log('key', key)
+console.log('json', json)
 
 
 /*
