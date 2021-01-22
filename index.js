@@ -29,6 +29,10 @@ const postCall = async (url, key, json) => {
 
 let params={}
 
+function convertToJson(j) {
+  return JSON.parse(j);
+}
+
 args.map(item => {
     if (item.includes(ARGS.URL)){
         params.url=item.substring(ARGS.URL.length, item.length)
@@ -38,7 +42,7 @@ args.map(item => {
     }
     else if (item.includes(ARGS.JSON)){
         let json=item.substring(ARGS.JSON.length, item.length)
-        let data=JSON.parse(json)
+        let data=convertToJson(json)
         params.json=data
     }
 })
