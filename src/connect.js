@@ -4,10 +4,8 @@ const query=require("./query")
 
 const executeQuery = async (q) => {
     try {
-        console.log("q****", q)
         return await dbClient.query(q).then((results) => {
-			console.log(results)
-			console.log("*******************")
+			console.log("****resukts*****", results)			
             return results
 		})
 		.catch(err=>{
