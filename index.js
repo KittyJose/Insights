@@ -1,6 +1,7 @@
-const DBConnect = require("./src/connect");
-const axios = require('axios');
+const DBConnect = require("./src/connect")
 const ARGS=require('./src/constants/args')
+const axios = require('axios')
+
 
 //const core = require('./node_modules/@actions/core')
 //const github = require('./node_modules/@actions/github')
@@ -26,21 +27,25 @@ const postCall = async (url, key, json) => {
     return result
 }
 
+let params={}
 
 args.map(item => {
     if (item.includes(ARGS.URL)){
-        let url=item.substring(ARGS.URL.length, item.length)
+        params.url=item.substring(ARGS.URL.length, item.length)
     }
     else if (item.includes(ARGS.KEY)){
-        let key=item.substring(ARGS.KEY.length, item.length)
+        params.key=item.substring(ARGS.KEY.length, item.length)
     }
     else if (item.includes(ARGS.JSON)){
         let json=item.substring(ARGS.JSON.length, item.length)
         let data=JSON.parse(json)
-        //DBConnect(opts, data)
+        params.json=data
     }
-
 })
+
+console.log("params", params)
+
+DBConnect(opts, params.data)
 
 
 
