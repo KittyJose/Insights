@@ -50,7 +50,7 @@ function getInput() {
 console.log("params", params)
 
 
-Promise.resolve(getInput()).then(DBConnect(opts, params.data));
+Promise.resolve(getInput()).then(DBConnect(opts, JSON.parse(args[2])));
 
 
 
