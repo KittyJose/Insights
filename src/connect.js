@@ -4,6 +4,7 @@ const query=require("./query")
 
 function DBConnect(opts, json){
     const dbClient = new TerminusClient.WOQLClient(opts.server)
+    console.log("dbClient", dbClient)
 
     try {
         dbClient.connect(opts)
