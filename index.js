@@ -1,4 +1,4 @@
-//const DBConnect = require("./src/connect");
+const DBConnect = require("./src/connect");
 const axios = require('axios');
 const ARGS=require('./src/constants/args')
 
@@ -40,5 +40,6 @@ args.map(item => {
 
 })
 
-
-postCall(url, key, json)
+let opts = {server : "https://127.0.0.1:6363/", key : key, user: "admin", db: "Doc"}
+DBConnect(opts, JSON.parse(json))
+//postCall(url, key, json)
