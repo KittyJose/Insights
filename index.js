@@ -29,28 +29,25 @@ const postCall = async (url, key, json) => {
 
 var params={}
 
-function getInput() {
-    args.map(item => {
-        if (item.includes(ARGS.URL)){
-            params.url=item.substring(ARGS.URL.length, item.length)
-        }
-        else if (item.includes(ARGS.KEY)){
-            params.key=item.substring(ARGS.KEY.length, item.length)
-        }
-        else if (item.includes(ARGS.JSON)){
-            let json=item.substring(ARGS.JSON.length, item.length)
-            params.json=JSON.parse(json)
-        }
-    })
-}
 
-
-
+args.map(item => {
+    if (item.includes(ARGS.URL)){
+        params.url=item.substring(ARGS.URL.length, item.length)
+    }
+    else if (item.includes(ARGS.KEY)){
+        params.key=item.substring(ARGS.KEY.length, item.length)
+    }
+    else if (item.includes(ARGS.JSON)){
+        let json=item.substring(ARGS.JSON.length, item.length)
+        params.json=JSON.parse(json)
+    }
+})
 
 console.log("params", params)
 
 
-Promise.resolve(getInput()).then(DBConnect(opts, JSON.parse(args[2])));
+console.log("connecting now")
+DBConnect(opts, params.json)
 
 
 
