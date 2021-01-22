@@ -35,9 +35,9 @@ args.map(item => {
     else if (item.includes(ARGS.KEY)){
         let key=item.substring(ARGS.KEY.length, item.length)
     }
-    else if (item.includes(ARGS.JSON)){
-        console.log("JSON ***** ", json)
+    else if (item.includes(ARGS.JSON)){        
         let json=item.substring(ARGS.JSON.length, item.length)
+        console.log("JSON ***** ", json)
     }
 
 })
