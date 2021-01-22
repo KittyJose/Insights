@@ -5,7 +5,7 @@ const ARGS=require('./src/constants/args')
 //const core = require('./node_modules/@actions/core')
 //const github = require('./node_modules/@actions/github')
 
-
+let opts = {server : "https://127.0.0.1:6363/", key : "root", user: "admin", db: "Doc"}
 let args = process.argv.slice(2), url, key, json
 
 const getHeader = async (key) => {
@@ -26,6 +26,7 @@ const postCall = async (url, key, json) => {
     return result
 }
 
+console.log("args ***** ", args)
 
 args.map(item => {
     if (item.includes(ARGS.URL)){
@@ -36,10 +37,15 @@ args.map(item => {
     }
     else if (item.includes(ARGS.JSON)){
         let json=item.substring(ARGS.JSON.length, item.length)
+        let data=JSON.parse(json)
+        console.log('data', typeof data)
+        DBConnect(opts, data)
     }
 
 })
 
-let opts = {server : "https://127.0.0.1:6363/", key : key, user: "admin", db: "Doc"}
-DBConnect(opts, JSON.parse(json))
+
+
+
+//DBConnect(opts, JSON.parse(json))
 //postCall(url, key, json)
