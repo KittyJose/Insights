@@ -24,10 +24,9 @@ function DBConnect(opts, json){
     const dbClient = new TerminusClient.WOQLClient(opts.server)
     dbClient.connect(opts)
 	const WOQL=TerminusClient.WOQL
-    let q=query(json)
-    if(q){
-		return executeQuery(q, dbClient)
-    }
+    //let q=query(json)
+    let q=WOQL.doctype("HELLO")
+    return executeQuery(q, dbClient)
 }
 
 module.exports = DBConnect
