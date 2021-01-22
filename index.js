@@ -2,19 +2,12 @@ const DBConnect = require("./src/connect");
 const axios = require('axios');
 const ARGS=require('./src/constants/args')
 const TerminusClient=require("@terminusdb/terminusdb-client")
-const core = require('@actions/core')
-//const github = require('./node_modules/@actions/github')
+//const core = require('@actions/core')
+//const github = require('@actions/github')
 
 let opts = {server : "https://127.0.0.1:6363/", key : "root", user: "admin", db: "Doc"}
 let args = process.argv.slice(2), url, key, json
 
-
-const a = core.getInput('database');
-const b = core.getInput('key');
-const c = core.getInput('json');
-console.log('a', a)
-console.log('b', b)
-console.log('c', c)
 
 /*const getHeader = async (key) => {
     const options = {
@@ -43,27 +36,29 @@ args.map(item => {
     }
     else if (item.includes(ARGS.JSON)){
         let json=item.substring(ARGS.JSON.length, item.length)
-        let data=JSON.parse(json)
-        console.log('data', typeof data)
-        const dbClient = new TerminusClient.WOQLClient(opts.server)
-        dbClient.connect(opts)
-    	const WOQL=TerminusClient.WOQL
-        let q=WOQL.doctype("testDOC")
-        return dbClient.query(q).then((results) => {
-			console.log(results)
-			console.log("*******************")
-            return results
-		})
-		.catch(err=>{
-			console.log('err', err)
-		})
-        //DBConnect(opts, data)
+        //let data=JSON.parse(json)
     }
 
 })
 
 
-
+try{
+    const dbClient = new TerminusClient.WOQLClient(opts.server)
+    dbClient.connect(opts)
+    const WOQL=TerminusClient.WOQL
+    let q=WOQL.doctype("testDOCNODE")
+    dbClient.query(q).then((results) => {
+        console.log(results)
+        console.log("*******************")
+        return results
+    })
+    .catch(err=>{
+        console.log('err', err)
+    })
+    //DBConnect(opts, data)
+} catch (err){
+    console.log(err);
+}
 
 //DBConnect(opts, JSON.parse(json))
 //postCall(url, key, json)
